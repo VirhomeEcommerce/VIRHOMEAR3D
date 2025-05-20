@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quadro AR su parete</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/3.3.2/aframe/build/aframe-ar.min.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+      .instructions {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 16px;
+        color: white;
+        text-shadow: 0 0 5px black;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="instructions">
+      📄 Inquadra il marker stampato per vedere il quadro 3D sulla parete
+    </div>
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      <a-assets>
+        <a-asset-item id="model" src="model.glb"></a-asset-item>
+      </a-assets>
+
+      <a-marker preset="hiro">
+        <a-entity gltf-model="#model" scale="2 2 2" position="0 0 0" rotation="0 0 0"></a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
